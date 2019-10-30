@@ -7,7 +7,7 @@ def lift_dataset(path):
         event_line_number_regex = '.*\s([0-9]+):[0-9]{1,2}.*'
         return int(re.match(event_line_number_regex, annotation).group(1))
 
-    folder = Path('../dataset/2012-07-15.original-annotation.release')
+    folder = Path(path)
     relations = [rfile for rfile in folder.iterdir() if rfile.name.endswith('tlink')]
     for filename in relations:
         with open(filename.absolute(), 'r') as f, open(str(filename.absolute()).replace('tlink', 'txt'), 'r') as s:
